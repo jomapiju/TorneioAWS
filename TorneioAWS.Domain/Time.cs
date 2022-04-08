@@ -10,4 +10,7 @@ public class Time : IEntity
     public string Localidade { get; set; }
     [JsonIgnore]
     public List<Jogador> Jogadores { get; set; }
+
+    [JsonIgnore]
+    public List<Evento> Eventos { get; set; }
 }

@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  aws-projeto-final-db:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: aws-projeto-final
+      MYSQL_ROOT_PASSWORD: banco2022
+      MYSQL_PASSWORD: banco2022
+      MYSQL_USER: admin
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./infra/init.sql:/docker-entrypoint-initdb.d/1.sql
+      - aws-db-volume:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - network-aws
+
+  aws-projeto-final-rmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - network-aws
+
+  aws-projeto-final-cache:
+    image: redis:6.2-alpine
+    container_name: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - aws-cache:/data
+    networks:
+      - network-aws
+
+volumes:
+    aws-db-volume:
+    aws-cache:
+
+networks:
+  network-aws:
+    driver: bridge
+      

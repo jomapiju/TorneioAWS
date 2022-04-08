@@ -42,5 +42,8 @@ public class JogadorMap : IEntityTypeConfiguration<Jogador>
 
         builder.HasMany(c => c.Transferencias)
             .WithOne(e => e.Jogador);
+
+        builder.HasMany(c => c.Eventos)
+            .WithOne(e => e.JogadorPrincipal);
     }
 }

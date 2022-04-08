@@ -14,5 +14,6 @@ internal static class DependencyInjectionRepository
         services.AddScoped<IRepository<Competicao>, CompeticaoRepositorio>();
         services.AddScoped<IRepository<Partida>, PartidaRepositorio>();
         services.AddScoped<IRepository<Transferencia>, TransferenciaRepositorio>();
+        services.AddScoped<IRepository<Evento>, EventoRepositorio>();
     }
 }

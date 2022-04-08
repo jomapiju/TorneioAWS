@@ -12,4 +12,8 @@ public class Partida : IEntity
     public Time TimeVisitante { get; set; }
     public Guid CompeticaoId { get; set; }
     public Competicao Competicao { get; set; }
+
+    
+    [JsonIgnore]
+    public List<Evento> Eventos { get; set; }
 }

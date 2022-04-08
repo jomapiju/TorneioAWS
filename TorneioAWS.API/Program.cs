@@ -1,7 +1,7 @@
 using TorneioAWS.IoC;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Converters;
 using TorneioAWS.Repository.Comum.Contextos;
+using TorneioAWS.Common.Hosted;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.Re
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDI();
+
+builder.Services.AddHostedService<QueueHosted>();
 
 builder.Services.AddDbContext<TorneioContext>(options => options
                 .UseMySQL("server=localhost;port=3307;database=aws-projeto-final;user=admin;password=banco2022")

@@ -13,6 +13,7 @@ public class TorneioContext : DbContext
     public virtual DbSet<Partida> Partidas { get; set; }
     public virtual DbSet<Competicao> Competicoes { get; set; }
     public virtual DbSet<Transferencia> Transferencias { get; set; }
+    public virtual DbSet<Evento> Eventos { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,5 +25,6 @@ public class TorneioContext : DbContext
         modelBuilder.ApplyConfiguration(new PartidaMap());
         modelBuilder.ApplyConfiguration(new CompeticaoMap());
         modelBuilder.ApplyConfiguration(new TransferenciaMap());
+        modelBuilder.ApplyConfiguration(new EventoMap());
     }
 }

@@ -90,6 +90,12 @@ using TorneioAWS.UseCase.Torneio.AlterarPartida;
 using TorneioAWS.Application.UseCases.Torneio.DeletarPartida;
 using TorneioAWS.UseCase.Torneio.DeletarPartida;
 
+using TorneioAWS.Application.UseCases.Torneio.AdicionaEvento;
+using TorneioAWS.UseCase.AdicionaEvento;
+
+using TorneioAWS.Application.UseCases.Torneio.AdicionaEventoComJogador;
+using TorneioAWS.UseCase.AdicionaEventoComJogador;
+
 namespace TorneioAWS.IoC;
 internal static class DependencyInjectionUseCase
 {
@@ -129,5 +135,8 @@ internal static class DependencyInjectionUseCase
         services.AddScoped<ISubstituirPartidaUseCase, SubstituirPartidaUseCase>();
         services.AddScoped<IAlterarPartidaUseCase, AlterarPartidaUseCase>();
         services.AddScoped<IDeletarPartidaUseCase, DeletarPartidaUseCase>();
+
+        services.AddScoped<IAdicionaEventoUseCase, AdicionaEventoUseCase>();
+        services.AddScoped<IAdicionaEventoComJogadorUseCase, AdicionaEventoComJogadorUseCase>();
     }
 }

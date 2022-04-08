@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.JsonPatch;
+using StackExchange.Redis;
+using Newtonsoft.Json;
 
 using TorneioAWS.Application.UseCases.Torneio.ObterTodosJogadores;
 using TorneioAWS.Application.UseCases.Torneio.ObterJogador;
@@ -23,6 +25,7 @@ public class JogadorController : ControllerBase
     private readonly IAlterarJogadorUseCase _alterarJogadorUseCase;
     private readonly IDeletarJogadorUseCase _deletarJogadorUseCase;
     private readonly ILogger<JogadorController> _logger;
+    private readonly IConnectionMultiplexer _redis;
 
     public JogadorController(
         IObterTodosJogadoresUseCase obterTodosJogadoresUseCase,
@@ -31,7 +34,8 @@ public class JogadorController : ControllerBase
         ISubstituirJogadorUseCase substituirJogadorUseCase,
         IAlterarJogadorUseCase alterarJogadorUseCase,
         IDeletarJogadorUseCase deletarJogadorUseCase,
-        ILogger<JogadorController> logger)
+        ILogger<JogadorController> logger,
+        IConnectionMultiplexer redis)
     {
         _logger = logger;
         _obterTodosJogadoresUseCase = obterTodosJogadoresUseCase;
@@ -40,17 +44,24 @@ public class JogadorController : ControllerBase
         _substituirJogadorUseCase = substituirJogadorUseCase;
         _alterarJogadorUseCase = alterarJogadorUseCase;
         _deletarJogadorUseCase = deletarJogadorUseCase;
+        _redis = redis;
     }
 
     [HttpGet("")]
-    public ActionResult ObterTodosTime()
+    public async Task<ActionResult> ObterTodosJogadores()
     {
-        var time = _obterTodosJogadoresUseCase.Execute();
+        var jogadores = await GetJogadores<ObterTodosJogadoresDto>("Jogadores");
+        
 
-        if (time == null)
+        if (jogadores == null) {
+            jogadores = (ObterTodosJogadoresDto) _obterTodosJogadoresUseCase.Execute();
+            await AddJogadores("Jogadores", jogadores);
+        }
+
+        if (jogadores == null)
             return NotFound();
 
-        return Ok(time);
+        return Ok(jogadores);
     }
 
     [HttpGet("{id}")]
@@ -106,5 +117,18 @@ public class JogadorController : ControllerBase
             return BadRequest();
 
         return Ok();
+    }
+
+    private async Task AddJogadores(string key, object valor)
+        => await _redis.GetDatabase().StringSetAsync(key, JsonConvert.SerializeObject(valor), TimeSpan.FromMinutes(10), When.NotExists)
+        .ConfigureAwait(false);
+
+    private async Task<T> GetJogadores<T>(string key) 
+    {
+        RedisValue rv = await _redis.GetDatabase().StringGetAsync(key).ConfigureAwait(false);
+        if (!rv.HasValue)
+            return default;
+        T rgv = JsonConvert.DeserializeObject<T>(rv);
+        return rgv;
     }
 }

@@ -9,4 +9,6 @@ public class Competicao : IEntity
     public string Nome { get; set; }
     [JsonIgnore]
     public List<Partida> Partidas { get; set; }
+    [JsonIgnore]
+    public List<Evento> Eventos { get; set; }
 }
