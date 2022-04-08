@@ -1,0 +1,834 @@
+openapi: 3.0.1
+info:
+  title: TorneioAWS.API
+  version: '1.0'
+paths:
+  /Competicao:
+    get:
+      tags:
+        - Competicao
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Competicao
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarCompeticaoRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarCompeticaoRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarCompeticaoRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarCompeticaoRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Competicao/{id}:
+    get:
+      tags:
+        - Competicao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Competicao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirCompeticaoRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirCompeticaoRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirCompeticaoRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirCompeticaoRequestDto'
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+        - Competicao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Competicao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  /Evento:
+    post:
+      tags:
+        - Evento
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarEventoRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarEventoRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarEventoRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarEventoRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Jogador:
+    get:
+      tags:
+        - Jogador
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Jogador
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarJogadorRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarJogadorRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarJogadorRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarJogadorRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Jogador/{id}:
+    get:
+      tags:
+        - Jogador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Jogador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirJogadorRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirJogadorRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirJogadorRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirJogadorRequestDto'
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+        - Jogador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Jogador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  /Partida:
+    get:
+      tags:
+        - Partida
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Partida
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarPartidaRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarPartidaRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarPartidaRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarPartidaRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Partida/{id}:
+    get:
+      tags:
+        - Partida
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Partida
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirPartidaRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirPartidaRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirPartidaRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirPartidaRequestDto'
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+        - Partida
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Partida
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  /Time:
+    get:
+      tags:
+        - Time
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Time
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarTimeRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarTimeRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarTimeRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarTimeRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Time/{id}:
+    get:
+      tags:
+        - Time
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Time
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTimeRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTimeRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTimeRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTimeRequestDto'
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+        - Time
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Time
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  /Transferencia:
+    get:
+      tags:
+        - Transferencia
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Transferencia
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalvarTransferenciaRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalvarTransferenciaRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalvarTransferenciaRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalvarTransferenciaRequestDto'
+      responses:
+        '200':
+          description: Success
+  /Transferencia/{id}:
+    get:
+      tags:
+        - Transferencia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Transferencia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTransferenciaRequestDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTransferenciaRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTransferenciaRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubstituirTransferenciaRequestDto'
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+        - Transferencia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Transferencia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    Operation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+          nullable: true
+        op:
+          type: string
+          nullable: true
+        from:
+          type: string
+          nullable: true
+        value:
+          nullable: true
+      additionalProperties: false
+    OperationType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      type: integer
+      format: int32
+    SalvarCompeticaoRequestDto:
+      required:
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+      additionalProperties: false
+    SalvarEventoRequestDto:
+      required:
+        - comepticaoId
+        - partidaId
+        - timeId
+        - tipo
+      type: object
+      properties:
+        comepticaoId:
+          type: string
+          format: uuid
+        partidaId:
+          type: string
+          format: uuid
+        timeId:
+          type: string
+          format: uuid
+        tipo:
+          $ref: '#/components/schemas/TipoEvento'
+        jogadorEventoId:
+          type: string
+          format: uuid
+          nullable: true
+        novoJogadorId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    SalvarJogadorRequestDto:
+      required:
+        - dataNascimento
+        - nome
+        - pais
+        - timeId
+      type: object
+      properties:
+        nome:
+          type: string
+        dataNascimento:
+          type: string
+          format: date-time
+        pais:
+          type: string
+        timeId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SalvarPartidaRequestDto:
+      required:
+        - competicaoId
+        - timeCasaId
+        - timeVisitanteId
+      type: object
+      properties:
+        timeCasaId:
+          type: string
+          format: uuid
+        timeVisitanteId:
+          type: string
+          format: uuid
+        competicaoId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SalvarTimeRequestDto:
+      required:
+        - localidade
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+        localidade:
+          type: string
+      additionalProperties: false
+    SalvarTransferenciaRequestDto:
+      required:
+        - dataTransferencia
+        - jogadorId
+        - timeDestinoId
+        - timeOrigemId
+        - valor
+      type: object
+      properties:
+        jogadorId:
+          type: string
+          format: uuid
+        valor:
+          type: number
+          format: double
+        dataTransferencia:
+          type: string
+          format: date-time
+        timeOrigemId:
+          type: string
+          format: uuid
+        timeDestinoId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SubstituirCompeticaoRequestDto:
+      required:
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+      additionalProperties: false
+    SubstituirJogadorRequestDto:
+      required:
+        - dataNascimento
+        - nome
+        - pais
+        - timeId
+      type: object
+      properties:
+        nome:
+          type: string
+        dataNascimento:
+          type: string
+          format: date-time
+        pais:
+          type: string
+        timeId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SubstituirPartidaRequestDto:
+      required:
+        - competicaoId
+        - timeCasaId
+        - timeVisitanteId
+      type: object
+      properties:
+        timeCasaId:
+          type: string
+          format: uuid
+        timeVisitanteId:
+          type: string
+          format: uuid
+        competicaoId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SubstituirTimeRequestDto:
+      required:
+        - localidade
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+        localidade:
+          type: string
+      additionalProperties: false
+    SubstituirTransferenciaRequestDto:
+      required:
+        - dataTransferencia
+        - jogadorId
+        - timeDestinoId
+        - timeOrigemId
+        - valor
+      type: object
+      properties:
+        jogadorId:
+          type: string
+          format: uuid
+        valor:
+          type: number
+          format: double
+        dataTransferencia:
+          type: string
+          format: date-time
+        timeOrigemId:
+          type: string
+          format: uuid
+        timeDestinoId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    TipoEvento:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      type: integer
+      format: int32
