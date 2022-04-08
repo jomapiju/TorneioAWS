@@ -102,7 +102,7 @@ public  class AdicionaEventoComJogadorUseCase : IAdicionaEventoComJogadorUseCase
             }
         }
 
-        if(jogadorPrincipal.TimeId.Equals(time.TimeId))
+        if(!jogadorPrincipal.TimeId.Equals(time.TimeId))
             return null;
 
         if (eventoComJogadorRequest.TipoEvento == TipoEvento.Substituicao) {
@@ -116,7 +116,7 @@ public  class AdicionaEventoComJogadorUseCase : IAdicionaEventoComJogadorUseCase
                 }
             }
 
-            if(jogadorSecundario.TimeId.Equals(time.TimeId))
+            if(!jogadorSecundario.TimeId.Equals(time.TimeId))
                 return null;
         }
 
