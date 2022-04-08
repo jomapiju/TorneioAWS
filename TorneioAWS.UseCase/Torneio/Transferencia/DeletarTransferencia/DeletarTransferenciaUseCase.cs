@@ -16,7 +16,7 @@ public  class DeletarTransferenciaUseCase : IDeletarTransferenciaUseCase
         _transferenciaRepository = transferenciaRepository;
     }
 
-    public IResourceModel Execute(Guid id)
+    public string Execute(Guid id)
     {
         Transferencia transferencia = _transferenciaRepository.Get(_obterTransferenciaEspecificacao.Execute(id));
 
@@ -25,6 +25,6 @@ public  class DeletarTransferenciaUseCase : IDeletarTransferenciaUseCase
         
         _transferenciaRepository.Remove(transferencia);
 
-        return null;
+        return "Sucesso";
     }
 }

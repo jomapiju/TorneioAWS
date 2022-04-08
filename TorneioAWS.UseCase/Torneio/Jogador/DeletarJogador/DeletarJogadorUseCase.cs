@@ -16,7 +16,7 @@ public  class DeletarJogadorUseCase : IDeletarJogadorUseCase
         _jogadorRepository = jogadorRepository;
     }
 
-    public IResourceModel Execute(Guid id)
+    public string Execute(Guid id)
     {
         Jogador jogador = _jogadorRepository.Get(_obterJogadorEspecificacao.Execute(id));
 
@@ -25,6 +25,6 @@ public  class DeletarJogadorUseCase : IDeletarJogadorUseCase
         
         _jogadorRepository.Remove(jogador);
 
-        return null;
+        return "Sucesso";
     }
 }

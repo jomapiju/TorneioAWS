@@ -16,7 +16,7 @@ public  class DeletarTimeUseCase : IDeletarTimeUseCase
         _timeRepository = timeRepository;
     }
 
-    public IResourceModel Execute(Guid id)
+    public string Execute(Guid id)
     {
         Time time = _timeRepository.Get(_obterTimeEspecificacao.Execute(id));
 
@@ -25,6 +25,6 @@ public  class DeletarTimeUseCase : IDeletarTimeUseCase
         
         _timeRepository.Remove(time);
 
-        return null;
+        return "Sucesso";
     }
 }

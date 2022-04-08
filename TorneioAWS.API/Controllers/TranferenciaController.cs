@@ -104,6 +104,6 @@ public class TransferenciaController : ControllerBase
         if (Transferencia == null)
             return BadRequest();
 
-        return Ok();
+        return Ok(Transferencia);
     }
 }

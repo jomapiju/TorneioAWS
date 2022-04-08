@@ -16,7 +16,7 @@ public  class DeletarCompeticaoUseCase : IDeletarCompeticaoUseCase
         _competicaoRepository = competicaoRepository;
     }
 
-    public IResourceModel Execute(Guid id)
+    public string Execute(Guid id)
     {
         Competicao competicao = _competicaoRepository.Get(_obterCompeticaoEspecificacao.Execute(id));
 
@@ -25,6 +25,6 @@ public  class DeletarCompeticaoUseCase : IDeletarCompeticaoUseCase
         
         _competicaoRepository.Remove(competicao);
 
-        return null;
+        return "Sucesso";
     }
 }

@@ -16,7 +16,7 @@ public  class DeletarPartidaUseCase : IDeletarPartidaUseCase
         _partidaRepository = partidaRepository;
     }
 
-    public IResourceModel Execute(Guid id)
+    public string Execute(Guid id)
     {
         Partida partida = _partidaRepository.Get(_obterPartidaEspecificacao.Execute(id));
 
@@ -25,6 +25,6 @@ public  class DeletarPartidaUseCase : IDeletarPartidaUseCase
         
         _partidaRepository.Remove(partida);
 
-        return null;
+        return "Sucesso";
     }
 }

@@ -105,6 +105,6 @@ public class PartidaController : ControllerBase
         if (Partida == null)
             return BadRequest();
 
-        return Ok();
+        return Ok(Partida);
     }
 }

@@ -4,5 +4,5 @@ namespace TorneioAWS.Application.UseCases.Torneio.DeletarPartida;
 
 public interface IDeletarPartidaUseCase
 {
-    IResourceModel Execute(Guid id);
+    string Execute(Guid id);
 }

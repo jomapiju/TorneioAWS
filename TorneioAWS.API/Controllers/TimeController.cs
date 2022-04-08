@@ -104,6 +104,6 @@ public class TimeController : ControllerBase
         if (time == null)
             return BadRequest();
 
-        return Ok();
+        return Ok(time);
     }
 }

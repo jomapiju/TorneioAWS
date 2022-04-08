@@ -116,7 +116,7 @@ public class JogadorController : ControllerBase
         if (Jogador == null)
             return BadRequest();
 
-        return Ok();
+        return Ok(Jogador);
     }
 
     private async Task AddJogadores(string key, object valor)

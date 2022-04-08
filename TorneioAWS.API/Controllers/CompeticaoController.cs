@@ -105,6 +105,6 @@ public class CompeticaoController : ControllerBase
         if (Competicao == null)
             return BadRequest();
 
-        return Ok();
+        return Ok(Competicao);
     }
 }

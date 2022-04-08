@@ -4,5 +4,5 @@ namespace TorneioAWS.Application.UseCases.Torneio.DeletarJogador;
 
 public interface IDeletarJogadorUseCase
 {
-    IResourceModel Execute(Guid id);
+    string Execute(Guid id);
 }

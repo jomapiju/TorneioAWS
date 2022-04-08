@@ -4,5 +4,5 @@ namespace TorneioAWS.Application.UseCases.Torneio.DeletarTime;
 
 public interface IDeletarTimeUseCase
 {
-    IResourceModel Execute(Guid id);
+    string Execute(Guid id);
 }
